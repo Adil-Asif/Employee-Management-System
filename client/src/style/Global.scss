@@ -1,0 +1,22 @@
+:root {
+  // Colors
+  --primary-color: rgb(57, 0, 182)
+    linear-gradient(
+      90deg,
+      rgba(57, 0, 182, 1) 0%,
+      rgba(167, 101, 251, 1) 39%,
+      rgba(154, 17, 252, 1) 90%,
+      rgba(205, 118, 245, 1) 100%
+    );
+
+  //  Fonts
+  --font-family-logo: "M PLUS Rounded 1c", sans-serif;
+  --font-family-sidebar-sourcesans: "Source Sans 3", sans-serif;
+  --font-family-placeholder: "PT Sans", sans-serif;
+  --font-family-roboto: "Roboto", sans-serif;
+  --font-family-title: "Lato", sans-serif;
+  --font-family-description: "Nunito", sans-serif;
+  --font-family-heading: "Nunito", sans-serif;
+  --font-family-number: "Nunito", sans-serif;
+  --font-family-button: "Hind Siliguri", sans-serif;
+}
