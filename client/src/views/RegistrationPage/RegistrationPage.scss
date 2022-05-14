@@ -1,0 +1,21 @@
+.registrationPage {
+  margin: 0;
+  .body {
+    display: flex;
+    .right {
+      width: 40%;
+    }
+    .left {
+      width: 60%;
+      background: var(--primary-color);
+      height: 602px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 50%;
+      }
+    }
+  }
+}

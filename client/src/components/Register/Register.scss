@@ -1,0 +1,37 @@
+.register {
+  .formHeader {
+    padding-top: 50px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+    img {
+      width: 200px;
+    }
+    .formHeading {
+      font-size: 25px;
+      color: #423f3e;
+      margin-top: 5px;
+    }
+  }
+  .formBody {
+    padding: 60px 40px 0px 30px;
+    .ant-form-item-label {
+      font-weight: bold;
+    }
+    .ant-input,
+    .ant-input-password {
+      width: 350px;
+      border-radius: 4px;
+    }
+  }
+  .ant-btn-primary {
+    border: none;
+    border-radius: 4px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    text-align: center;
+    font-size: 16px;
+  }
+}
