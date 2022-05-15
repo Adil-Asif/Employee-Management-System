@@ -28,9 +28,16 @@ const Header = (props) => {
     />
   );
   return (
-    <div className="header">
+    <div
+      className="header"
+      style={{ background: props.isLogin ? "var(--primary-color)" : "none" }}
+    >
       <div className="logo">
-        <img src={Logo} alt="Logo" />
+        {props.isLogin ? (
+          <div className="text">EMS</div>
+        ) : (
+          <img src={Logo} alt="Logo" />
+        )}
       </div>
       {props.isLogin ? (
         <>
@@ -40,7 +47,7 @@ const Header = (props) => {
                 size={50}
                 icon={<UserOutlined />}
                 style={{
-                  backgroundColor: "#8785a2",
+                  backgroundColor: "var(--secondary-variant-color)",
                   margin: "5px 20px 5px 0px",
                 }}
               />

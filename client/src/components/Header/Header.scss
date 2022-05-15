@@ -1,115 +1,22 @@
 .header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 5px 10px;
-   .logo {
-     img {
-       width: 150px;
-     }
-   }
-   border-bottom: 1px solid #dfdfde;
-   .buttons {
-     font-family: var(--font-family-button);
-     padding-right: 20px;
-     display: flex;
-     align-items: center;
-     .ant-btn-primary {
-       border: none;
-       padding: 0px;
-       height: fit-content;
-       text-align: center;
-       font-size: 16px;
-     }
-     .login {
-       margin-right: 20px;
-       .ant-btn{
-         box-shadow:none;
-       }
-       .ant-btn-primary {
-         color: black;
-         background-color: white;
-         border: none;
-         &:hover {
-           color: var(--button-color);
-           font-weight: bold;
-         }
-       }
-     }
-     .register {
-       .ant-btn-primary {
-         padding: 8px;
-         background-color: var(--button-color);
-         border-radius: 4px;
-         color: white;
-         &:hover {
-           box-shadow: 5px 5px 5px #bab6e8;
-         }
-       }
-     }
-   }
- }.header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 5px 10px;
-   .logo {
-     img {
-       width: 150px;
-     }
-   }
-   border-bottom: 1px solid #dfdfde;
-   .buttons {
-     font-family: var(--font-family-button);
-     padding-right: 20px;
-     display: flex;
-     align-items: center;
-     .ant-btn-primary {
-       border: none;
-       padding: 0px;
-       height: fit-content;
-       text-align: center;
-       font-size: 16px;
-     }
-     .login {
-       margin-right: 20px;
-       .ant-btn{
-         box-shadow:none;
-       }
-       .ant-btn-primary {
-         color: black;
-         background-color: white;
-         border: none;
-         &:hover {
-           color: #8785a2;
-           font-weight: bold;
-         }
-       }
-     }
-     .register {
-       .ant-btn-primary {
-         padding: 8px;
-         background-color: #8785a2;
-         border-radius: 4px;
-         color: white;
-         &:hover {
-           box-shadow: 5px 5px 5px #bab6e8;
-         }
-       }
-     }
-   }
- }.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
   .logo {
+    .text {
+      color: var(--white);
+      font-size: 30px;
+      margin-left: 20px;
+      font-family: var(--font-family-logo);
+    }
     img {
       width: 150px;
     }
   }
-  border-bottom: 1px solid #dfdfde;
+  border-bottom: 1px solid var(--border-color);
   .buttons {
+    font-family: var(--font-family-button);
     padding-right: 20px;
     display: flex;
     align-items: center;
@@ -122,8 +29,59 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
+      }
+      .ant-btn-primary {
+        color: black;
+        background-color: white;
+        border: none;
+        &:hover {
+          color: var(--button-color);
+          font-weight: bold;
+        }
+      }
+    }
+    .register {
+      .ant-btn-primary {
+        padding: 8px;
+        background-color: var(--button-color);
+        border-radius: 4px;
+        color: white;
+        &:hover {
+          box-shadow: 5px 5px 5px #bab6e8;
+        }
+      }
+    }
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  .logo {
+    img {
+      width: 150px;
+    }
+  }
+  border-bottom: 1px solid #dfdfde;
+  .buttons {
+    font-family: var(--font-family-button);
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    .ant-btn-primary {
+      border: none;
+      padding: 0px;
+      height: fit-content;
+      text-align: center;
+      font-size: 16px;
+    }
+    .login {
+      margin-right: 20px;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -147,7 +105,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,8 +130,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -196,7 +155,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -220,8 +180,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -245,7 +205,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -269,8 +230,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -294,7 +255,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -318,8 +280,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -343,7 +305,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -367,8 +330,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -392,7 +355,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -416,8 +380,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -441,7 +405,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -465,8 +430,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -490,7 +455,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -514,8 +480,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -539,7 +505,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -563,8 +530,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -588,7 +555,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -612,8 +580,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -637,7 +605,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -661,8 +630,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -686,7 +655,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -710,8 +680,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -735,7 +705,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -759,8 +730,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -784,7 +755,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -808,8 +780,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -833,7 +805,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -857,8 +830,8 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
@@ -882,7 +855,8 @@
       }
     }
   }
-}.header {
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -906,8 +880,58 @@
     }
     .login {
       margin-right: 20px;
-      .ant-btn{
-        box-shadow:none;
+      .ant-btn {
+        box-shadow: none;
+      }
+      .ant-btn-primary {
+        color: black;
+        background-color: white;
+        border: none;
+        &:hover {
+          color: #8785a2;
+          font-weight: bold;
+        }
+      }
+    }
+    .register {
+      .ant-btn-primary {
+        padding: 8px;
+        background-color: #8785a2;
+        border-radius: 4px;
+        color: white;
+        &:hover {
+          box-shadow: 5px 5px 5px #bab6e8;
+        }
+      }
+    }
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  .logo {
+    img {
+      width: 150px;
+    }
+  }
+  border-bottom: 1px solid #dfdfde;
+  .buttons {
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    .ant-btn-primary {
+      border: none;
+      padding: 0px;
+      height: fit-content;
+      text-align: center;
+      font-size: 16px;
+    }
+    .login {
+      margin-right: 20px;
+      .ant-btn {
+        box-shadow: none;
       }
       .ant-btn-primary {
         color: black;
