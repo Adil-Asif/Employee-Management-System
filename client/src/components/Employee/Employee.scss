@@ -1,0 +1,74 @@
+.employee {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  .userInfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .details {
+      margin-left: 20px;
+      .name {
+        font-size: 20px;
+        font-family: var(--font-family-title);
+      }
+      .email,
+      .role {
+        font-size: 18px;
+        color: var(--gray);
+        font-family: var(--font-family-placeholder);
+      }
+    }
+  }
+  .button {
+    .ant-btn-primary {
+      background-color: var(--button-color);
+      border: none;
+      border-radius: 4px;
+      padding: 0px 20px;
+      &:hover {
+        box-shadow: 5px 5px 10px var(--secondary-variant-color);
+      }
+    }
+  }
+}
+
+.addOnboardingForm {
+  .ant-modal-content {
+    border-radius: 4px;
+    border-color: var(--textbox-border);
+    .ant-modal-header {
+      border-radius: 4px 4px 0px 0px;
+      border-color: var(--textbox-border);
+      .ant-modal-title {
+        text-align: center;
+        font-size: 22px;
+        padding: 8px;
+        font-family: var(--font-family-title);
+        font-weight: 600;
+      }
+    }
+    .onboardingForm {
+      text-align: justify;
+      .ant-form-item {
+        display: block;
+      }
+      .ant-form-item-label {
+        font-size: 18px;
+        font-weight: 600;
+        font-family: var(--font-family-heading);
+      }
+    }
+    .ant-input {
+      border-radius: 4px;
+      text-align: justify;
+    }
+
+    .ant-modal-footer {
+      .ant-btn {
+        border-radius: 4px;
+      }
+    }
+  }
+}
