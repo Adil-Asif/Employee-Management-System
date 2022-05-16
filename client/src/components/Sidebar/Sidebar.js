@@ -19,10 +19,16 @@ const Sidebar = (props) => {
   const movetoProfilePage = () => {
     navigate("/profile");
   };
+  const movetoonBoardingPage = () => {
+    navigate("/onboarding");
+  };
+  const movetooffBoardingPage = () => {
+    navigate("/offboarding");
+  };
   return (
     <div className="sidebar">
       <Sider breakpoint="lg" style={{}}>
-        <Menu mode="inline" className="menu" theme="dark">
+        <Menu mode="inline" className="menu" theme="dark"  defaultSelectedKeys={[props.PageKey]}>
           <Menu.Item className="menuItem" key="1" onClick={movetoProfilePage}>
             <div>
               <Image
@@ -45,18 +51,7 @@ const Sidebar = (props) => {
               Attendance
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="3">
-            <div>
-              <Image
-                className="image"
-                src={offboarding}
-                alt="offboarding"
-                preview={false}
-              />
-              Employee offboarding
-            </div>
-          </Menu.Item>
-          <Menu.Item className="menuItem" key="2">
+          <Menu.Item className="menuItem" key="2"  onClick={movetoonBoardingPage}>
             <div>
               <Image
                 className="image"
@@ -65,6 +60,17 @@ const Sidebar = (props) => {
                 preview={false}
               />
               Employee Onboarding
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="3" onClick={movetooffBoardingPage}>
+            <div>
+              <Image
+                className="image"
+                src={offboarding}
+                alt="offboarding"
+                preview={false}
+              />
+              Employee offboarding
             </div>
           </Menu.Item>
           <Menu.Item className="menuItem" key="4">
