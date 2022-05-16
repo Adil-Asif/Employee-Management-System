@@ -3,6 +3,7 @@ import "./Register.scss";
 import { Button, Form, Input, message } from "antd";
 import Logo from "../../assets/images/Logo.png";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 const { Password } = Input;
 const Register = (props) => {
   let navigate = useNavigate();
@@ -32,6 +33,18 @@ const Register = (props) => {
   useEffect(() => {
     registrationDetails !== "" ? console.log(registrationDetails) : <></>;
   }, [registrationDetails]);
+  const handleSubmit = ()=>{
+    console.log(registrationDetails.emailaddress)
+    axios.post('http://localhost:5000/',
+    {emailaddress:registrationDetails.emailaddress,
+      password:registrationDetails.password,
+      username:registrationDetails.username,
+      role:'employee'
+    }).then(response=>{
+      console.log('response',response.data)
+    })
+  // console.log('j')  
+  }
   return (
     <div className="register">
       <div className="formHeader">
@@ -105,7 +118,7 @@ const Register = (props) => {
             <></>
           )}
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
               {props.loginForm ? <>Login</> : <>Register</>}
             </Button>
           </Form.Item>
