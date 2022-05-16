@@ -8,6 +8,7 @@ import ProfileTitle from "../../components/ProfileTitle/ProfileTitle";
 import Announcement from "../../components/Announcement/Announcement";
 import Projects from "../../components/Projects/Projects";
 import Leaves from "../../components/Leave/Leave";
+import AddAnnouncement from "../../components/AddAnnouncement/AddAnnouncement";
 const { Content } = Layout;
 
 const ProfilePage = () => {
@@ -52,9 +53,15 @@ const ProfilePage = () => {
                   </div>
                 </div>
                 <div className="leaves">
-                  <div className="heading">Leaves</div>
+                  <div className="heading">Help Desk</div>
                   <div>
                     <Leaves/>
+                  </div>
+                </div>
+                <div className="addAnnouncement">
+                  <div className="heading">Announcement</div>
+                  <div>
+                    <AddAnnouncement/>
                   </div>
                 </div>
               </div>
