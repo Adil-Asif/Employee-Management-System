@@ -1,0 +1,72 @@
+.addAnnouncementItem {
+  background-color: white;
+  border-radius: 4px;
+  padding: 15px 0px 15px 0px;
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .number {
+        font-family: var(--font-family-number);
+      }
+      .text {
+        color: var(--gray);
+        font-family: var(--font-family-placeholder);
+      }
+    }
+    .ant-btn-primary {
+      margin-top: 15px;
+      background-color: var(--button-color);
+      border: none;
+      border-radius: 4px;
+      &:hover {
+        box-shadow: 5px 5px 10px var(--secondary-variant-color);
+      }
+    }
+  }
+
+}
+
+.addAnnouncementForm{
+  .ant-modal-content {
+    border-radius: 4px;
+    border-color: var(--textbox-border);
+    .ant-modal-header {
+      border-radius: 4px 4px 0px 0px;
+      border-color: var(--textbox-border);
+      .ant-modal-title {
+        text-align: center;
+        font-size: 22px;
+        padding: 8px;
+        font-family: var(--font-family-title);
+        font-weight: 600;
+      }
+    }
+    .announcementForm {
+      text-align: justify;
+      .ant-form-item {
+        display: block;
+      }
+      .ant-form-item-label {
+        font-size: 18px;
+        font-weight: 600;
+        font-family: var(--font-family-heading);
+      }
+    }
+    .ant-input {
+      border-radius: 4px;
+      text-align: justify;
+    }
+
+    .ant-modal-footer {
+      .ant-btn {
+        border-radius: 4px;
+      }
+    }
+  }
+
+}

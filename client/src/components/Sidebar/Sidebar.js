@@ -1,6 +1,6 @@
-import { React, useState } from "react";
+import { React } from "react";
 import "./Sidebar.scss";
-
+import { useNavigate } from "react-router-dom";
 import profile from "../../assets/images/profile.svg";
 import onboarding from "../../assets/images/onboarding.svg";
 import offboarding from "../../assets/images/offboarding.svg";
@@ -8,18 +8,22 @@ import salary from "../../assets/images/salary.svg";
 import projectteam from "../../assets/images/projectTeam.svg";
 import reports from "../../assets/images/reports.svg";
 import benefits from "../../assets/images/benefits.svg";
-import { Menu, Layout, Image } from "antd";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import helpdesk from "../../assets/images/helpdesk.svg";
+import attendance from "../../assets/images/attendance.svg";
+import { Menu, Layout, Image} from "antd";
 
 const { Sider } = Layout;
 
 const Sidebar = (props) => {
-    const [collapsed, setCollapsed]  = useState(false);
+  let navigate = useNavigate();
+  const movetoProfilePage = () => {
+    navigate("/profile");
+  };
   return (
     <div className="sidebar">
-      <Sider>
+      <Sider breakpoint="lg" style={{}}>
         <Menu mode="inline" className="menu" theme="dark">
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="1" onClick={movetoProfilePage}>
             <div>
               <Image
                 className="image"
@@ -30,18 +34,18 @@ const Sidebar = (props) => {
               Profile
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="9">
             <div>
               <Image
                 className="image"
-                src={onboarding}
-                alt="onboarding"
+                src={attendance}
+                alt="attendance"
                 preview={false}
               />
-              Employee Onboarding
+              Attendance
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="3">
             <div>
               <Image
                 className="image"
@@ -52,7 +56,18 @@ const Sidebar = (props) => {
               Employee offboarding
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="2">
+            <div>
+              <Image
+                className="image"
+                src={onboarding}
+                alt="onboarding"
+                preview={false}
+              />
+              Employee Onboarding
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="4">
             <div>
               <Image
                 className="image"
@@ -63,7 +78,7 @@ const Sidebar = (props) => {
               Salaries
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="5">
             <div>
               <Image
                 className="image"
@@ -74,7 +89,7 @@ const Sidebar = (props) => {
               Project Teams
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="6">
             <div>
               <Image
                 className="image"
@@ -85,7 +100,18 @@ const Sidebar = (props) => {
               Employee Reports
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem">
+          <Menu.Item className="menuItem" key="7">
+            <div>
+              <Image
+                className="image"
+                src={helpdesk}
+                alt="helpdesk"
+                preview={false}
+              />
+              Help Desks
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="8">
             <div>
               <Image
                 className="image"
