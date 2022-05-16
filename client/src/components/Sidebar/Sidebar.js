@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import "./Sidebar.scss";
 
 import profile from "../../assets/images/profile.svg";
@@ -9,15 +9,13 @@ import projectteam from "../../assets/images/projectTeam.svg";
 import reports from "../../assets/images/reports.svg";
 import benefits from "../../assets/images/benefits.svg";
 import { Menu, Layout, Image } from "antd";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const { Sider } = Layout;
 
 const Sidebar = (props) => {
-    const [collapsed, setCollapsed]  = useState(false);
   return (
     <div className="sidebar">
-      <Sider>
+      <Sider breakpoint="lg" style={{ }}>
         <Menu mode="inline" className="menu" theme="dark">
           <Menu.Item className="menuItem">
             <div>

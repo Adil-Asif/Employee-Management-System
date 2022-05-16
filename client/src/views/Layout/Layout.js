@@ -13,11 +13,14 @@ const ProfilePage = () => {
       <Layout
         style={{
           minHeight: "82.25vh",
-          backgroundColor: "white",
+          backgroundColor: "var(--layout-background)",
         }}
       >
         <Sidebar />
-        <Layout className="site-layout" style={{ backgroundColor: "white" }}>
+        <Layout
+          className="site-layout"
+          style={{ backgroundColor: "var(--layout-background)" }}
+        >
           <Content style={{ margin: "0 0px" }}></Content>
         </Layout>
       </Layout>
@@ -28,3 +31,11 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
+// scss
+// .profilePage{
+//   .header{
+//       border: none;
+//       padding-bottom: 6px;
+//   }
+// }

@@ -1,6 +1,41 @@
-.profilePage{
-    .header{
-        border: none;
-        padding-bottom: 6px;
+.profilePage {
+  .header {
+    border: none;
+    padding-bottom: 6px;
+  }
+  .content {
+      
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    .right{
+        width: 75%;
+        .heading{
+            text-align: justify;
+            font-size: 23px;
+            font-weight: bold;
+            font-family: var(--font-family-heading);
+        }
     }
+    .left{
+        margin-right: 5%;
+        margin-left: 5%;
+        .heading{
+            font-size: 20px;
+            font-weight: bold;
+            font-family: var(--font-family-heading);
+            margin-bottom: 10%;
+         }
+    }
+    .leaves{
+      margin-top: 30%;
+      .heading{
+          font-size: 20px;
+          font-weight: bold;
+          font-family: var(--font-family-heading);
+          margin-bottom: 10%;
+       }
+
+    }
+  }
 }
