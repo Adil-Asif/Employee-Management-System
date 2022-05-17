@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import { Button, Layout, Modal, Form, Input } from "antd";
-import "./Benefits.scss";
+import "./BenefitsPage.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import BenefitItem from "../../components/BenefitItem/BenefitItem";
 const { Content } = Layout;
 
-const Benefits = () => {
+const BenefitsPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [benefitDetails, setBenefitDetails] = useState("");
   const [form] = Form.useForm();
@@ -167,4 +167,4 @@ const Benefits = () => {
   );
 };
 
-export default Benefits;
+export default BenefitsPage;

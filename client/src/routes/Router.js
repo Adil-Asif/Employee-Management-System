@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Benefits from "../views/Benefits/Benefits";
+import BenefitsPage from "../views/BenefitsPage/BenefitsPage";
+import EmployeeReportsPage from "../views/EmployeeReportsPage/EmployeeReportsPage";
 import OFFBoardingPage from "../views/OFFBoardingPage/OFFBoardingPage";
 import ONBoardingPage from "../views/ONBoardingPage/ONBoardingPage";
 import ProfilePage from "../views/ProfilePage/ProfilePage";
@@ -11,7 +12,8 @@ const Routers = () => {
       <Route exact path="/profile" element={<ProfilePage />} />
       <Route exact path="/onboarding" element={<ONBoardingPage />} />
       <Route exact path="/offboarding" element={<OFFBoardingPage />} />
-      <Route exact path="/benefits" element={<Benefits />} />
+      <Route exact path="/benefits" element={<BenefitsPage />} />
+      <Route exact path="/employeereports" element={<EmployeeReportsPage />} />
     </Routes>
   );
 };
