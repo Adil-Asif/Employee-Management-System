@@ -21,7 +21,7 @@ const ProfilePage = () => {
           backgroundColor: "var(--layout-background)",
         }}
       >
-        <Sidebar PageKey="9"/>
+        <Sidebar PageKey="1"/>
         <Layout
           className="site-layout"
           style={{ backgroundColor: "var(--layout-background)" }}
