@@ -1,0 +1,30 @@
+.benefitItem {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  .serialNumber {
+    margin-right: 20px;
+    border: 2px solid var(--border-color);
+    padding: 5px 12px;
+    border-radius: 16px;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: var(--font-family-title);
+    text-align: justify;
+  }
+  .description {
+    font-size: 16px;
+    font-family: var(--font-family-description);
+    text-align: justify;
+  }
+  .promo{
+    font-size: 16px;
+    font-family: var(--font-family-placeholder);
+    color: var(--gray);
+  }
+}

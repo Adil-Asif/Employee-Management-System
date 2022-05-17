@@ -1,0 +1,30 @@
+.employeeReportsPage {
+  .header {
+    border: none;
+    padding-bottom: 6px;
+  }
+  .content {
+    .titleSection {
+      background-color: var(--white);
+      border-radius: 4px;
+      width: 95%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: fit-content;
+      padding-bottom: 20px;
+      .pageTitle {
+        padding: 3% 0 1% 0%;
+        margin-left: 35px;
+      }
+    }
+    .employeeList{
+        margin-top: 5%;
+        width: 95%;
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 10px 0px;
+      }
+    }
+  }
+

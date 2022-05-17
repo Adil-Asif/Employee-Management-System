@@ -25,6 +25,12 @@ const Sidebar = (props) => {
   const movetooffBoardingPage = () => {
     navigate("/offboarding");
   };
+  const movetoBenefitsPage = () => {
+    navigate("/benefits");
+  };
+  const movetoEmployeeReportsPage = () => {
+    navigate("/employeereports");
+  };
   return (
     <div className="sidebar">
       <Sider breakpoint="lg" style={{}}>
@@ -95,7 +101,7 @@ const Sidebar = (props) => {
               Project Teams
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="6">
+          <Menu.Item className="menuItem" key="6" onClick={movetoEmployeeReportsPage}>
             <div>
               <Image
                 className="image"
@@ -117,7 +123,7 @@ const Sidebar = (props) => {
               Help Desks
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="8">
+          <Menu.Item className="menuItem" key="8" onClick={movetoBenefitsPage}>
             <div>
               <Image
                 className="image"
