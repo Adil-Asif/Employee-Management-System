@@ -14,7 +14,7 @@ const ProfileTitle = () => {
 
   useEffect(() => {
     if (imageAsUrl.imgUrl !== "") {
-      console.log(imageAsUrl);
+      console.log(imageAsUrl); //trigger image
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageAsUrl]);

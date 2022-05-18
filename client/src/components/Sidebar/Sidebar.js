@@ -25,12 +25,23 @@ const Sidebar = (props) => {
   const movetooffBoardingPage = () => {
     navigate("/offboarding");
   };
-  const movetoBenefitsPage = () => {
-    navigate("/benefits");
+  const movetoSalariesPage = () => {
+    navigate("/salaries");
+  };
+  const movetoProjectsPage = () => {
+    navigate("/projects");
   };
   const movetoEmployeeReportsPage = () => {
     navigate("/employeereports");
   };
+  const movetoHelpDesksPage = () => {
+    navigate("/helpdesk");
+  };
+  const movetoBenefitsPage = () => {
+    navigate("/benefits");
+  };
+
+
   return (
     <div className="sidebar">
       <Sider breakpoint="lg" style={{}}>
@@ -79,7 +90,7 @@ const Sidebar = (props) => {
               Employee offboarding
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="4">
+          <Menu.Item className="menuItem" key="4" onClick={movetoSalariesPage}>
             <div>
               <Image
                 className="image"
@@ -87,10 +98,10 @@ const Sidebar = (props) => {
                 alt="salary"
                 preview={false}
               />
-              Salaries
+              Employee Salaries
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="5">
+          <Menu.Item className="menuItem" key="5" onClick={movetoProjectsPage}>
             <div>
               <Image
                 className="image"
@@ -112,7 +123,7 @@ const Sidebar = (props) => {
               Employee Reports
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="7">
+          <Menu.Item className="menuItem" key="7" onClick={movetoHelpDesksPage}>
             <div>
               <Image
                 className="image"
