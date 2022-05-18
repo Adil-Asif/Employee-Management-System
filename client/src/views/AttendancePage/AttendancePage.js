@@ -5,7 +5,6 @@ import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { Layout, Button, Timeline } from "antd";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import LeavesTable from "../../components/LeavesTable/LeavesTable";
 
 const { Content } = Layout;
 

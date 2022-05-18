@@ -31,6 +31,9 @@ const Sidebar = (props) => {
   const movetoSalariesPage = () => {
     navigate("/salaries");
   };
+  const movetoPaySlipPage = () => {
+    navigate("/payslip");
+  };
   const movetoProjectsPage = () => {
     navigate("/projects");
   };
@@ -102,6 +105,17 @@ const Sidebar = (props) => {
                 preview={false}
               />
               Employee Salaries
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="10" onClick={movetoPaySlipPage}>
+            <div>
+              <Image
+                className="image"
+                src={salary}
+                alt="salary"
+                preview={false}
+              />
+              Payslip
             </div>
           </Menu.Item>
           <Menu.Item className="menuItem" key="5" onClick={movetoProjectsPage}>

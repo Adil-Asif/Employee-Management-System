@@ -9,6 +9,7 @@ import RegistrationPage from "../views/RegistrationPage/RegistrationPage";
 import EmployeeSalariesPage from "../views/EmployeeSalariesPage/EmployeeSalariesPage";
 import HelpDeskPage from "../views/HelpDeskPage/HelpDesk";
 import AttendancePage from "../views/AttendancePage/AttendancePage";
+import SalaryPage from "../views/SalaryPage/SalaryPage";
 const Routers = () => {
   return (
     <Routes>
@@ -22,6 +23,7 @@ const Routers = () => {
       <Route exact path ="/salaries" element={<EmployeeSalariesPage/>}/>
       <Route exact path ="/helpdesk" element={<HelpDeskPage/>}/>
       <Route exact path ="/attendance" element={<AttendancePage/>}/>
+      <Route exact path ="/payslip" element={<SalaryPage/>}/>
     </Routes>
   );
 };
