@@ -40,6 +40,9 @@ const Sidebar = (props) => {
   const movetoEmployeeReportsPage = () => {
     navigate("/employeereports");
   };
+  const movetoFeedbackPage = () => {
+    navigate("/feedback");
+  };
   const movetoHelpDesksPage = () => {
     navigate("/helpdesk");
   };
@@ -138,6 +141,17 @@ const Sidebar = (props) => {
                 preview={false}
               />
               Employee Reports
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="11" onClick={movetoFeedbackPage}>
+            <div>
+              <Image
+                className="image"
+                src={reports}
+                alt="reports"
+                preview={false}
+              />
+              Feedback
             </div>
           </Menu.Item>
           <Menu.Item className="menuItem" key="7" onClick={movetoHelpDesksPage}>

@@ -1,17 +1,15 @@
-import React from "react";
-import "./HelpDesk.scss";
+import { React } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
-import PageTitle from "../../components/PageTitle/PageTitle";
 import { Layout } from "antd";
+import "./FeedbackPage.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import LeavesTable from "../../components/LeavesTable/LeavesTable";
-
+import PageTitle from "../../components/PageTitle/PageTitle";
 const { Content } = Layout;
 
-const HelpDeskPage = () => {
+const FeedbackPage = () => {
   return (
-    <div className="helpDeskPage">
+    <div className="feedbackPage">
       <Header isLogin={true} />
       <Layout
         style={{
@@ -19,7 +17,7 @@ const HelpDeskPage = () => {
           backgroundColor: "var(--layout-background)",
         }}
       >
-        <Sidebar PageKey="7" />
+        <Sidebar PageKey="11" />
         <Layout
           className="site-layout"
           style={{ backgroundColor: "var(--layout-background)" }}
@@ -28,11 +26,11 @@ const HelpDeskPage = () => {
             <div className="content">
               <div className="titleSection">
                 <div className="pageTitle">
-                  <PageTitle title="Help Desk" />
+                  <PageTitle title="Feedback" />
                 </div>
               </div>
-              <div className="helpDeskTable">
-              <LeavesTable/>
+              <div className="feedbackItem">
+                LoremIp lkcnlkenvlknlklk elj kj ckjjwebcvjnlknvlklk
               </div>
             </div>
           </Content>
@@ -44,4 +42,4 @@ const HelpDeskPage = () => {
   );
 };
 
-export default HelpDeskPage;
+export default FeedbackPage;
