@@ -2,15 +2,14 @@ import { React } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import { Layout } from "antd";
-import "./EmployeeReportsPage.scss";
+import "./FeedbackPage.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PageTitle from "../../components/PageTitle/PageTitle";
-import EmployeeReportItem from "../../components/EmployeeReportItem/EmployeeReportItem";
 const { Content } = Layout;
 
-const EmployeeReportsPage = () => {
+const FeedbackPage = () => {
   return (
-    <div className="employeeReportsPage">
+    <div className="feedbackPage">
       <Header isLogin={true} />
       <Layout
         style={{
@@ -18,7 +17,7 @@ const EmployeeReportsPage = () => {
           backgroundColor: "var(--layout-background)",
         }}
       >
-        <Sidebar PageKey="6" />
+        <Sidebar PageKey="11" />
         <Layout
           className="site-layout"
           style={{ backgroundColor: "var(--layout-background)" }}
@@ -27,15 +26,11 @@ const EmployeeReportsPage = () => {
             <div className="content">
               <div className="titleSection">
                 <div className="pageTitle">
-                  <PageTitle title="Employee Reports" />
+                  <PageTitle title="Feedback" />
                 </div>
               </div>
-              <div className="employeeList">
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={true} />
+              <div className="feedbackItem">
+                LoremIp lkcnlkenvlknlklk elj kj ckjjwebcvjnlknvlklk
               </div>
             </div>
           </Content>
@@ -47,4 +42,4 @@ const EmployeeReportsPage = () => {
   );
 };
 
-export default EmployeeReportsPage;
+export default FeedbackPage;

@@ -19,18 +19,38 @@ const Sidebar = (props) => {
   const movetoProfilePage = () => {
     navigate("/profile");
   };
+  const movetoAttendancePage = () => {
+    navigate("/attendance");
+  };
   const movetoonBoardingPage = () => {
     navigate("/onboarding");
   };
   const movetooffBoardingPage = () => {
     navigate("/offboarding");
   };
-  const movetoBenefitsPage = () => {
-    navigate("/benefits");
+  const movetoSalariesPage = () => {
+    navigate("/salaries");
+  };
+  const movetoPaySlipPage = () => {
+    navigate("/payslip");
+  };
+  const movetoProjectsPage = () => {
+    navigate("/projects");
   };
   const movetoEmployeeReportsPage = () => {
     navigate("/employeereports");
   };
+  const movetoFeedbackPage = () => {
+    navigate("/feedback");
+  };
+  const movetoHelpDesksPage = () => {
+    navigate("/helpdesk");
+  };
+  const movetoBenefitsPage = () => {
+    navigate("/benefits");
+  };
+
+
   return (
     <div className="sidebar">
       <Sider breakpoint="lg" style={{}}>
@@ -46,7 +66,7 @@ const Sidebar = (props) => {
               Profile
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="9">
+          <Menu.Item className="menuItem" key="9" onClick={movetoAttendancePage}>
             <div>
               <Image
                 className="image"
@@ -79,7 +99,7 @@ const Sidebar = (props) => {
               Employee offboarding
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="4">
+          <Menu.Item className="menuItem" key="4" onClick={movetoSalariesPage}>
             <div>
               <Image
                 className="image"
@@ -87,10 +107,21 @@ const Sidebar = (props) => {
                 alt="salary"
                 preview={false}
               />
-              Salaries
+              Employee Salaries
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="5">
+          <Menu.Item className="menuItem" key="10" onClick={movetoPaySlipPage}>
+            <div>
+              <Image
+                className="image"
+                src={salary}
+                alt="salary"
+                preview={false}
+              />
+              Payslip
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="5" onClick={movetoProjectsPage}>
             <div>
               <Image
                 className="image"
@@ -112,7 +143,18 @@ const Sidebar = (props) => {
               Employee Reports
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="7">
+          <Menu.Item className="menuItem" key="11" onClick={movetoFeedbackPage}>
+            <div>
+              <Image
+                className="image"
+                src={reports}
+                alt="reports"
+                preview={false}
+              />
+              Feedback
+            </div>
+          </Menu.Item>
+          <Menu.Item className="menuItem" key="7" onClick={movetoHelpDesksPage}>
             <div>
               <Image
                 className="image"

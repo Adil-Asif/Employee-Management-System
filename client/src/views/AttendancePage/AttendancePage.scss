@@ -1,0 +1,75 @@
+.attendancePage {
+  .header {
+    border: none;
+    padding-bottom: 6px;
+  }
+  .content {
+    .titleSection {
+      background-color: var(--white);
+      border-radius: 4px;
+      width: 95%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: fit-content;
+      padding-bottom: 20px;
+      .pageTitle {
+        padding: 3% 0 1% 0%;
+        margin-left: 35px;
+      }
+    }
+    .attendance {
+      width: 95%;
+      margin-top: 5%;
+      background-color: var(--white);
+      padding: 40px 90px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .markAttendance {
+        width: 40%;
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        border: 2px solid var(--border-color);
+        .punchButton {
+            padding: 30px;
+          .ant-btn-primary {
+            padding: 80px 40px;
+            border-radius: 150px;
+            display: flex;
+            background-color: var(--button-color);
+            border: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-family: var(--font-family-title);
+            &:hover{
+                box-shadow: 5px 5px 10px var(--secondary-variant-color);
+            }
+          }
+        }
+        .latest{
+            text-align: center;
+            font-size: 18px;
+            color:var(--gray);
+        }
+      }
+      .attendanceHistory{
+          height: 100%;
+          overflow-y: auto ;
+          width: 40%;
+          height: 300px;
+          padding: 30px;
+          align-items: center;
+          border-radius: 8px;
+          border: 2px solid var(--border-color);
+          
+      }
+    }
+  }
+}

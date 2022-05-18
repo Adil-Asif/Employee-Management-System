@@ -4,7 +4,13 @@ import EmployeeReportsPage from "../views/EmployeeReportsPage/EmployeeReportsPag
 import OFFBoardingPage from "../views/OFFBoardingPage/OFFBoardingPage";
 import ONBoardingPage from "../views/ONBoardingPage/ONBoardingPage";
 import ProfilePage from "../views/ProfilePage/ProfilePage";
+import ProjectManagement from "../views/ProjectManagement/ProjectManagement";
 import RegistrationPage from "../views/RegistrationPage/RegistrationPage";
+import EmployeeSalariesPage from "../views/EmployeeSalariesPage/EmployeeSalariesPage";
+import HelpDeskPage from "../views/HelpDeskPage/HelpDesk";
+import AttendancePage from "../views/AttendancePage/AttendancePage";
+import SalaryPage from "../views/SalaryPage/SalaryPage";
+import FeedbackPage from "../views/FeedbackPage/FeedbackPage";
 const Routers = () => {
   return (
     <Routes>
@@ -14,6 +20,12 @@ const Routers = () => {
       <Route exact path="/offboarding" element={<OFFBoardingPage />} />
       <Route exact path="/benefits" element={<BenefitsPage />} />
       <Route exact path="/employeereports" element={<EmployeeReportsPage />} />
+      <Route exact path ="/projects" element={<ProjectManagement/>}/>
+      <Route exact path ="/salaries" element={<EmployeeSalariesPage/>}/>
+      <Route exact path ="/helpdesk" element={<HelpDeskPage/>}/>
+      <Route exact path ="/attendance" element={<AttendancePage/>}/>
+      <Route exact path ="/payslip" element={<SalaryPage/>}/>
+      <Route exact path ="/feedback" element={<FeedbackPage/>}/>
     </Routes>
   );
 };

@@ -1,0 +1,16 @@
+.leavesTable {
+  .ant-btn-primary {
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    &:hover {
+      background-color: var(--button-color);
+      box-shadow: 5px 5px 10px var(--secondary-variant-color);
+    }
+  }
+}
+

@@ -1,16 +1,18 @@
 import { React } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
-import { Layout } from "antd";
-import "./EmployeeReportsPage.scss";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import PageTitle from "../../components/PageTitle/PageTitle";
-import EmployeeReportItem from "../../components/EmployeeReportItem/EmployeeReportItem";
+import { Layout } from "antd";
+import "./EmployeeSalariesPage.scss";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import EmployeesSalariesTable from "../../components/EmployeesSalariesTable/EmployeesSalariesTable";
+
 const { Content } = Layout;
 
-const EmployeeReportsPage = () => {
+const EmployeeSalariesPage = () => {
+  
   return (
-    <div className="employeeReportsPage">
+    <div className="salaryPage">
       <Header isLogin={true} />
       <Layout
         style={{
@@ -18,7 +20,7 @@ const EmployeeReportsPage = () => {
           backgroundColor: "var(--layout-background)",
         }}
       >
-        <Sidebar PageKey="6" />
+        <Sidebar PageKey="4" />
         <Layout
           className="site-layout"
           style={{ backgroundColor: "var(--layout-background)" }}
@@ -27,15 +29,11 @@ const EmployeeReportsPage = () => {
             <div className="content">
               <div className="titleSection">
                 <div className="pageTitle">
-                  <PageTitle title="Employee Reports" />
+                  <PageTitle title="Generate Employee Salaries" />
                 </div>
               </div>
-              <div className="employeeList">
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={true} />
+              <div className="salaryTable">
+              <EmployeesSalariesTable/>
               </div>
             </div>
           </Content>
@@ -47,4 +45,4 @@ const EmployeeReportsPage = () => {
   );
 };
 
-export default EmployeeReportsPage;
+export default EmployeeSalariesPage;

@@ -1,0 +1,58 @@
+.salaryReciept {
+  .header {
+    border: none;
+    padding-bottom: 6px;
+  }
+  .content {
+    .titleSection {
+      background-color: var(--white);
+      border-radius: 4px;
+      width: 95%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: fit-content;
+      padding-bottom: 20px;
+      .pageTitle {
+        padding: 3% 0 1% 0%;
+        margin-left: 35px;
+      }
+    }
+    .paySlip {
+      margin-top: 5%;
+      width: 95%;
+      background-color: var(--white);
+      border-radius: 4px;
+      .payslipHeading {
+        font-size: 25px;
+        font-weight: bold;
+        font-family: var(--font-family-title);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0px;
+        border-bottom: 2px solid var(--border-color);
+      }
+      .details,
+      .total {
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px 0px 50px;
+        .heading {
+          font-family: var(--font-family-title);
+          font-weight: bold;
+        }
+        .description {
+          font-family: var(--font-family-description);
+        }
+      }
+    }
+    .total {
+      border-top: 2px solid var(--border-color);
+      margin-top: 30px;
+      padding-bottom: 20px !important;
+    }
+  }
+}
