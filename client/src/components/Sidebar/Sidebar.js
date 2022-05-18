@@ -19,6 +19,9 @@ const Sidebar = (props) => {
   const movetoProfilePage = () => {
     navigate("/profile");
   };
+  const movetoAttendancePage = () => {
+    navigate("/attendance");
+  };
   const movetoonBoardingPage = () => {
     navigate("/onboarding");
   };
@@ -57,7 +60,7 @@ const Sidebar = (props) => {
               Profile
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="9">
+          <Menu.Item className="menuItem" key="9" onClick={movetoAttendancePage}>
             <div>
               <Image
                 className="image"

@@ -11,7 +11,7 @@ const { Content } = Layout;
 
 const HelpDeskPage = () => {
   return (
-    <div className="salaryPage">
+    <div className="helpDeskPage">
       <Header isLogin={true} />
       <Layout
         style={{
@@ -31,7 +31,7 @@ const HelpDeskPage = () => {
                   <PageTitle title="Generate Employee Salaries" />
                 </div>
               </div>
-              <div className="salaryTable">
+              <div className="helpDeskTable">
               <LeavesTable/>
               </div>
             </div>
