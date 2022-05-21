@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { Button, Modal, Form, Input } from "antd";
 import "./AddAnnouncement.scss";
+import axios from 'axios'
 
 const AddAnnouncement = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -9,8 +10,13 @@ const AddAnnouncement = () => {
 
   useEffect(() => {
     if (announcementDetails !== "") {
-      console.log(announcementDetails);
+      console.log('Announcement Details: ',announcementDetails);
       setIsModalVisible(false);
+      axios.post('http://localhost:5000/profile',{Announcement:
+      {user_id:3,announcementdescription:announcementDetails.announcementDescription}
+    }).then(response=>{
+      console.log(response.data)
+    })
     }
   }, [announcementDetails]);
 
