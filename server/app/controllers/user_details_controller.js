@@ -36,15 +36,16 @@ exports.create = (req, res) => {
 
 //Delete a Manager with the specified id in the request
 exports.delete = (req, res) => {
-    User.remove(req.params.id, (err, data) => {
+    //console.log(req.params);
+    User.remove(req.params.userId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found user with id ${req.params.id}.`
+                    message: `Not found user with userId ${req.params.userId}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Could not delete user with id " + req.params.id
+                    message: "Could not delete user with userId " + req.params.userId
                 });
             }
         } else res.send({ message: `User was deleted successfully!` });

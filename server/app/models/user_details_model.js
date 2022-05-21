@@ -21,8 +21,8 @@ User.create = (newUser, result) => {
     });
 };
 
-User.remove = (id, result) => {
-    sql.query("DELETE FROM user_details WHERE userId = ?", id, (err, res) => {
+User.remove = (userId, result) => {
+    sql.query("DELETE FROM user_details WHERE userId = ?",userId, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -35,7 +35,7 @@ User.remove = (id, result) => {
             return;
         }
 
-        console.log("deleted user_detail with userId: ", id);
+        console.log("deleted user_detail with userId: ", userId);
         result(null, res);
     });
 };
