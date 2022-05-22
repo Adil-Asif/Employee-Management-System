@@ -16,8 +16,8 @@ const Register = (props) => {
     props.loginForm
       ? setLoginDetails(values)
       : values.reenterPassword === values.password
-      ? setRegistrationDetails(values)
-      : message.error("Password donot match! Try Again ;)");
+        ? setRegistrationDetails(values)
+        : message.error("Password donot match! Try Again ;)");
   };
 
   useEffect(() => {
@@ -27,24 +27,34 @@ const Register = (props) => {
     ) : (
       <></>
     );
+    axios.post('http://localhost:5000/signup',
+    {
+      login:loginDetails
+  }).then(response=>{
+    console.log('in response')
+      console.log(response.data)
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginDetails]);
 
   useEffect(() => {
+    axios.post('http://localhost:5000/',
+      {
+        signup: {
+          emailaddress: registrationDetails.emailaddress,
+          password: registrationDetails.password,
+          username: registrationDetails.username,
+          role: 'employee'
+        }
+      }).then(response => {
+        sessionStorage.setItem('employee_id',response.data.userid)
+      })
     registrationDetails !== "" ? console.log(registrationDetails) : <></>;
   }, [registrationDetails]);
-  const handleSubmit = ()=>{
-    console.log(registrationDetails.emailaddress)
-    axios.post('http://localhost:5000/',
-    {emailaddress:registrationDetails.emailaddress,
-      password:registrationDetails.password,
-      username:registrationDetails.username,
-      role:'employee'
-    }).then(response=>{
-      console.log('response',response.data)
-    })
-  // console.log('j')  
-  }
+  // const handleSubmit = ()=>{
+
+  // // console.log('j')  
+  // }
   return (
     <div className="register">
       <div className="formHeader">
@@ -118,7 +128,7 @@ const Register = (props) => {
             <></>
           )}
           <Form.Item>
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+            <Button type="primary" htmlType="submit">
               {props.loginForm ? <>Login</> : <>Register</>}
             </Button>
           </Form.Item>

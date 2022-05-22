@@ -5,6 +5,7 @@ import { UserOutlined, PlusOutlined } from "@ant-design/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import "./ProfileTitle.scss";
+import axios from 'axios'
 const ProfileTitle = () => {
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
@@ -14,7 +15,10 @@ const ProfileTitle = () => {
 
   useEffect(() => {
     if (imageAsUrl.imgUrl !== "") {
-      console.log(imageAsUrl); //trigger image
+      console.log('imageasUrl',imageAsUrl); //trigger image
+      axios.post('http://localhost:5000/profile',{image:imageAsUrl}).then(response=>{
+        console.log(response.data)
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageAsUrl]);
