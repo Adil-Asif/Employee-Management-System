@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import "./EmployeeReportItem.scss";
-import { Avatar, Button, Modal, Form, Select, Input } from "antd";
-const { Option } = Select;
+import { Avatar, Button, Modal, Form, Input } from "antd";
 
 const EmployeeReportItem = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
