@@ -9,6 +9,12 @@ const Leaves = () => {
   const [helpDeskDetails, setHelpDeskDetails] = useState("");
   const [form] = Form.useForm();
   
+  useEffect(()=>{
+    axios.get('http://localhost:5000/profile/help').then(response=>{
+      console.log(response.data)
+    })
+  },[])
+
   useEffect(() => {
     if (helpDeskDetails !== "") {
       console.log('leave details: ',helpDeskDetails);

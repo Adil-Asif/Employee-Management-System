@@ -10,6 +10,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import ProjectItem from "../../components/ProjectItem/ProjectItem";
+import axios from 'axios'
 const { Content } = Layout;
 const { TextArea } = Input;
 const { Option } = Select;
@@ -40,10 +41,18 @@ const ProjectManagement = () => {
 
   const [form] = Form.useForm();
 
+  useEffect(()=>{
+    axios.get('http://localhost:5000/projects').then(response=>{
+      console.log(response.data)
+    })
+    console.log('useEffect')
+  },[])
+
   useEffect(() => {
     form.resetFields();
     setIsModalVisible(false);
   }, [projectDetails, form]);
+
 
   useEffect(() => {
     const handleFireBaseUpload = () => {
@@ -117,6 +126,21 @@ const ProjectManagement = () => {
   useEffect(() => {
     if (projectDetails.isSubmitted) {
       console.log(projectDetails);
+      axios.post('http://localhost:5000/projects',projectDetails.projectMembers).then(response=>{
+        console.log('response::',response.data)
+        axios.post('http://localhost:5000/fillproject',
+        { title:projectDetails.projectTitle,
+          description:projectDetails.projectDescription,
+          members:response.data.member,
+          members_id:response.data.member_id,
+          imageUrl:response.data.imgUrl,
+          image:projectDetails.projectImage,
+          submitted:projectDetails.isSubmitted
+        }
+        ).then(response=>{
+          console.log(response.data)
+        })
+      })
     }
   }, [projectDetails]);
 

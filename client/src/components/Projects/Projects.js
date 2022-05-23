@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Projects.scss";
+import axios from "axios";
+
 const Projects = () => {
+  useEffect(()=>{
+    axios.get('http://localhost:5000/profile/project').then(response=>{
+      console.log(response.data)
+    })
+  },[])
   return (
     <div className="projectItem">
       <div className="row">
