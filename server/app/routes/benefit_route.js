@@ -1,13 +1,12 @@
-module.exports = app =>{
-    const benefit = require("../controllers/benefit_controller.js");
+var express = require("express");
+var app = express();
+router = express.Router();
+const benefit = require("../controllers/benefit_controller");
+var router = require("express").Router();
+var router = require("express").Router();
 
-    var router = require("express").Router();
+router.post("/", benefit.create);
 
-    router.post("/", benefit.create);
-    
-    router.get("/", benefit.findAll);
+router.get("/", benefit.findAll);
 
-    router.delete("/:benefitId" , benefit.delete)
-
-    app.use('/api/benefit', router);
-}
+module.exports = router;

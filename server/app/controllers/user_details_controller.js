@@ -35,19 +35,20 @@ exports.create = (req, res) => {
 };
 
 //Delete a Manager with the specified id in the request
-exports.delete = (req, res) => {
-    //console.log(req.params);
-    User.remove(req.params.userId, (err, data) => {
-        if (err) {
-            if (err.kind === "not_found") {
-                res.status(404).send({
-                    message: `Not found user with userId ${req.params.userId}.`
-                });
-            } else {
-                res.status(500).send({
-                    message: "Could not delete user with userId " + req.params.userId
-                });
-            }
-        } else res.send({ message: `User was deleted successfully!` });
+// Retrieve all Attendance from the database (with condition).
+exports.findAll = (req, res) => {
+    const id = req.query.id;
+    console.log(req.query.userId);
+    User.getAll(id, (err, data) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving attendance.",
+        });
+        console.log(err);
+      } else {
+        // console.log(data,"2");
+        res.send(data);
+      }
     });
-};
+  };

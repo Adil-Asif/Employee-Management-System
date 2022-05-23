@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import { Layout } from "antd";
@@ -6,9 +6,16 @@ import "./EmployeeReportsPage.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import EmployeeReportItem from "../../components/EmployeeReportItem/EmployeeReportItem";
+import axios from "axios";
 const { Content } = Layout;
 
 const EmployeeReportsPage = () => {
+  useEffect(()=>{
+    axios.get("http://localhost:5000/userDetails").then((response) =>{
+      console.log(response.data);
+      console.log("1");
+    })
+  },[])
   return (
     <div className="employeeReportsPage">
       <Header isLogin={true} />

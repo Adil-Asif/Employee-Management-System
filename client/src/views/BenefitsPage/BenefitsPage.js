@@ -1,25 +1,48 @@
 import { React, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
-import { Button, Layout, Modal, Form, Input } from "antd";
+import { Button, Layout, Modal, Form, Input, Image } from "antd";
 import "./BenefitsPage.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import noData from "../../assets/images/noData.svg"
+import axios from "axios";
 import BenefitItem from "../../components/BenefitItem/BenefitItem";
 const { Content } = Layout;
 
 const BenefitsPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [benefits, setBenefits] = useState([]);
+  const [testUpdate2, setTestUpdate2] = useState(true);
   const [benefitDetails, setBenefitDetails] = useState("");
   const [form] = Form.useForm();
 
   useEffect(() => {
+    console.log(benefitDetails);
+    setIsModalVisible(false);
+    axios.get("http://localhost:5000/benefits").then((response) => {
+      console.log(response);
+      setBenefits(response.data);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [testUpdate2]);
+  useEffect(() => {
     if (benefitDetails !== "") {
       console.log(benefitDetails);
       setIsModalVisible(false);
+      axios
+        .post("http://localhost:5000/benefits", benefitDetails)
+        .then((response) => {
+          if (testUpdate2) {
+            setTestUpdate2(false);
+          } else {
+            setTestUpdate2(true);
+          }
+        });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [benefitDetails]);
 
   const onSubmit = (values) => {
@@ -78,7 +101,7 @@ const BenefitsPage = () => {
                   >
                     <div className="benefitForm">
                       <Form form={form}>
-                      <Form.Item
+                        <Form.Item
                           name="benefitTitle"
                           label="Benefit Title"
                           rules={[
@@ -120,42 +143,20 @@ const BenefitsPage = () => {
                 </div>
               </div>
               <div className="benfits">
-                <BenefitItem
-                  sno="1"
-                  title="abc"
-                  description="helo"
-                  promo="123"
-                />
-                <BenefitItem
-                  sno="1"
-                  title="abc"
-                  description="helo"
-                  promo="123"
-                />
-                <BenefitItem
-                  sno="1"
-                  title="abc"
-                  description="helo"
-                  promo="123"
-                />
-                <BenefitItem
-                  sno="1"
-                  title="abc"
-                  description="helo"
-                  promo="123"
-                />
-                <BenefitItem
-                  sno="1"
-                  title="abc"
-                  description="helo"
-                  promo="123"
-                />
-                <BenefitItem
-                  sno="1"
-                  title="abc"
-                  description="helo"
-                  promo="123"
-                />
+                {benefits.length > 0 ? (
+                  benefits.map((benefit) => (
+                    <BenefitItem
+                      sno={benefit.benefitId}
+                      title={benefit.benefitTitle}
+                      description={benefit.benefitDescription}
+                      promo={benefit.benefitPromoCode}
+                    />
+                  ))
+                ) : (
+                  <div className="imageBackground">
+                    <Image src={noData} alt="NoData" width="30%"/>
+                  </div>
+                )}
               </div>
             </div>
           </Content>
