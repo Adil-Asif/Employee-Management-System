@@ -6,6 +6,8 @@ module.exports = app =>{
     //create new restaurant manager
     router.post("/", user.create);
 
+    router.get("/",user.findAll);
+
     router.delete("/:userId" , user.delete)
 
     app.use('/api/user', router);

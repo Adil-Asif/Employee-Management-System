@@ -34,6 +34,22 @@ exports.create = (req, res) => {
     
 };
 
+
+// Retrieve all Feedback from the database (with condition).
+exports.findAll = (req, res) => {
+    const id = req.query.id;
+
+    User.getAll(id, (err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving feedback."
+            });
+        else res.send(data);
+    });
+};
+
+
 //Delete a Manager with the specified id in the request
 exports.delete = (req, res) => {
     //console.log(req.params);

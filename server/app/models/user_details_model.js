@@ -21,6 +21,21 @@ User.create = (newUser, result) => {
     });
 };
 
+User.getAll = (id, result) => {
+    let query = 'SELECT * FROM user_details where isOnboard = "0" ';
+
+    sql.query(query, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+
+        console.log("benefit: ", res);
+        result(null, res);
+    });
+};
+
 User.remove = (userId, result) => {
     sql.query("DELETE FROM user_details WHERE userId = ?",userId, (err, res) => {
         if (err) {
