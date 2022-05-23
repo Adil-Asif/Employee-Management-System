@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./Register.scss";
 import { Button, Form, Input, message } from "antd";
 import Logo from "../../assets/images/Logo.png";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
+import { setIsLogin } from "../../slice/initialiseUserDetailsSlice";
+import { useDispatch } from "react-redux";
 const { Password } = Input;
+
 const Register = (props) => {
+  const dispatch = useDispatch();
+  const [isLoginForm, setIsLoginForm] = useState(props.loginForm);
+  const [form] = Form.useForm();
   let navigate = useNavigate();
   const moveToProfilePage = () => {
     navigate("/profile");
@@ -13,47 +19,69 @@ const Register = (props) => {
   const [loginDetails, setLoginDetails] = useState("");
   const [registrationDetails, setRegistrationDetails] = useState("");
   const onFinish = (values) => {
-    props.loginForm
+    console.log(isLoginForm);
+    isLoginForm
       ? setLoginDetails(values)
       : values.reenterPassword === values.password
-        ? setRegistrationDetails(values)
-        : message.error("Password donot match! Try Again ;)");
+      ? setRegistrationDetails(values)
+      : message.error("Password donot match! Try Again ;)");
   };
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-expressions
     loginDetails !== "" ? (
-      (console.log(loginDetails), moveToProfilePage())
+      (console.log(loginDetails),
+      axios
+        .post("http://localhost:5000/", {
+          login: loginDetails,
+        })
+        .then((response) => {
+          if (response.data === "Invalid email or password") {
+            form.resetFields();
+            message.error(response.data);
+          } else {
+            console.log(response.data, "h");
+            //TODO: Handle Redux
+            dispatch(
+              setIsLogin({ isLogin: true, userid: response.data.userid })
+            );
+            moveToProfilePage();
+          }
+        }))
     ) : (
+      // moveToProfilePage()
       <></>
     );
-    axios.post('http://localhost:5000/signup',
-    {
-      login:loginDetails
-  }).then(response=>{
-    console.log('in response')
-      console.log(response.data)
-    })
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginDetails]);
 
   useEffect(() => {
-    axios.post('http://localhost:5000/',
-      {
-        signup: {
-          emailaddress: registrationDetails.emailaddress,
-          password: registrationDetails.password,
-          username: registrationDetails.username,
-          role: 'employee'
-        }
-      }).then(response => {
-        sessionStorage.setItem('employee_id',response.data.userid)
-      })
-    registrationDetails !== "" ? console.log(registrationDetails) : <></>;
+    // eslint-disable-next-line no-unused-expressions
+    registrationDetails !== "" ? (
+      (console.log(registrationDetails),
+      (registrationDetails.role = "Employee"),
+      axios
+        .post("http://localhost:5000/", {
+          signup: registrationDetails,
+        })
+        .then((response) => {
+          if (response.data === "Email already registered") {
+            message.error(response.data);
+          } else {
+            setIsLoginForm(true);
+            form.resetFields();
+          }
+          console.log(response);
+        }))
+    ) : (
+      <></>
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registrationDetails]);
   // const handleSubmit = ()=>{
 
-  // // console.log('j')  
+  // // console.log('j')
   // }
   return (
     <div className="register">
@@ -62,12 +90,12 @@ const Register = (props) => {
           <img src={Logo} alt="Logo" />
         </div>
         <div className="formHeading">
-          {!props.loginForm ? <>Registeration Form</> : <>Login Form</>}
+          {!isLoginForm ? <>Registeration Form</> : <>Login Form</>}
         </div>
       </div>
       <div className="formBody">
-        <Form name="basic" onFinish={onFinish} autoComplete="off">
-          {!props.loginForm ? (
+        <Form name="basic" onFinish={onFinish} autoComplete="off" form={form}>
+          {!isLoginForm ? (
             <>
               <Form.Item
                 label="Username"
@@ -109,7 +137,7 @@ const Register = (props) => {
           >
             <Password style={{ marginLeft: "67px" }} />
           </Form.Item>
-          {!props.loginForm ? (
+          {!isLoginForm ? (
             <>
               <Form.Item
                 label="Re - enter Password"
@@ -129,7 +157,7 @@ const Register = (props) => {
           )}
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              {props.loginForm ? <>Login</> : <>Register</>}
+              {isLoginForm ? <>Login</> : <>Register</>}
             </Button>
           </Form.Item>
         </Form>

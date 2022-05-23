@@ -9,9 +9,13 @@ import Announcement from "../../components/Announcement/Announcement";
 import Projects from "../../components/Projects/Projects";
 import Leaves from "../../components/Leave/Leave";
 import AddAnnouncement from "../../components/AddAnnouncement/AddAnnouncement";
+import { useSelector } from "react-redux";
 const { Content } = Layout;
 
 const ProfilePage = () => {
+  const userid = useSelector((state) => state.userDetails.userid);
+  const isLogin = useSelector((state) => state.userDetails.isLogin);
+  console.log(userid,isLogin);
   return (
     <div className="profilePage">
       <Header isLogin={true} />
