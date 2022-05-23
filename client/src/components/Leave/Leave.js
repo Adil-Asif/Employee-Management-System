@@ -1,16 +1,23 @@
 import { React, useEffect, useState } from "react";
 import { Button, Modal, Form, Input, Select } from "antd";
 import "./Leave.scss";
+import axios from 'axios'
+
 const { Option } = Select;
 const Leaves = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [helpDeskDetails, setHelpDeskDetails] = useState("");
   const [form] = Form.useForm();
-
+  
   useEffect(() => {
     if (helpDeskDetails !== "") {
-      console.log(helpDeskDetails);
+      console.log('leave details: ',helpDeskDetails);
       setIsModalVisible(false);
+      axios.post('http://localhost:5000/profile',{leave:{user_id:3,helptitle:helpDeskDetails.helpTitle,
+      helpdescription:helpDeskDetails.helpDescription,helptype:helpDeskDetails.helptype}
+    }).then(response=>{
+      console.log(response.data)
+    })
     }
   }, [helpDeskDetails]);
 

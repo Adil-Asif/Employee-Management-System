@@ -1,17 +1,22 @@
 const express = require('express')
 var app = express()
 const cors = require('cors')
+const db = require('./models/database')
+const bodyParser = require("body-parser")
+var jsonParser = bodyParser.json()
+const { request } = require('express')
 
-const db = require('./app/models/database.js')
-const signupRouter = require('./app/routes/signup.js')
+app.use(
+    cors({
+      origin: ["http://localhost:3000"],
+      methods: ["GET", "POST"],
+      credentials: true,
+    })
+  );
+  app.use(jsonParser, bodyParser.urlencoded({ extended: false }))
 
-var corsOptions = { origin: "http://localhost:5000"};
-
-app.use(cors(corsOptions))
-app.use(express.json())
-
-app.use('/',signupRouter)
-
+require("./app/routes/signup.js")(app);
+require("./app/routes/profile.js")(app);
 require("./app/routes/user_details_route.js")(app);
 require("./app/routes/salary_route.js")(app);
 require("./app/routes/attendance_route.js")(app);
