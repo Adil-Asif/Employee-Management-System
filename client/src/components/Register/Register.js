@@ -10,7 +10,7 @@ const { Password } = Input;
 
 const Register = (props) => {
   const dispatch = useDispatch();
-  const [isLoginForm, setIsLoginForm] = useState(props.loginForm);
+  // const [props.loginForm, setprops.loginForm] = useState(props.loginForm);
   const [form] = Form.useForm();
   let navigate = useNavigate();
   const moveToProfilePage = () => {
@@ -19,8 +19,8 @@ const Register = (props) => {
   const [loginDetails, setLoginDetails] = useState("");
   const [registrationDetails, setRegistrationDetails] = useState("");
   const onFinish = (values) => {
-    console.log(isLoginForm);
-    isLoginForm
+    console.log(props.loginForm);
+    props.loginForm
       ? setLoginDetails(values)
       : values.reenterPassword === values.password
       ? setRegistrationDetails(values)
@@ -69,7 +69,9 @@ const Register = (props) => {
           if (response.data === "Email already registered") {
             message.error(response.data);
           } else {
-            setIsLoginForm(true);
+            // setprops.loginForm(true);
+            // props.loginForm = true;
+            message.success("Account Sucessfully Registered")
             form.resetFields();
           }
           console.log(response);
@@ -83,6 +85,7 @@ const Register = (props) => {
 
   // // console.log('j')
   // }
+  console.log(props.loginForm,"2")
   return (
     <div className="register">
       <div className="formHeader">
@@ -90,12 +93,12 @@ const Register = (props) => {
           <img src={Logo} alt="Logo" />
         </div>
         <div className="formHeading">
-          {!isLoginForm ? <>Registeration Form</> : <>Login Form</>}
+          {!props.loginForm ? <>Registeration Form</> : <>Login Form</>}
         </div>
       </div>
       <div className="formBody">
         <Form name="basic" onFinish={onFinish} autoComplete="off" form={form}>
-          {!isLoginForm ? (
+          {!props.loginForm ? (
             <>
               <Form.Item
                 label="Username"
@@ -137,7 +140,7 @@ const Register = (props) => {
           >
             <Password style={{ marginLeft: "67px" }} />
           </Form.Item>
-          {!isLoginForm ? (
+          {!props.loginForm ? (
             <>
               <Form.Item
                 label="Re - enter Password"
@@ -157,7 +160,7 @@ const Register = (props) => {
           )}
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              {isLoginForm ? <>Login</> : <>Register</>}
+              {props.loginForm ? <>Login</> : <>Register</>}
             </Button>
           </Form.Item>
         </Form>

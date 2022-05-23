@@ -26,6 +26,7 @@ const BenefitsPage = () => {
       console.log(response);
       setBenefits(response.data);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [testUpdate2]);
   useEffect(() => {
     if (benefitDetails !== "") {
@@ -41,6 +42,7 @@ const BenefitsPage = () => {
           }
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [benefitDetails]);
 
   const onSubmit = (values) => {

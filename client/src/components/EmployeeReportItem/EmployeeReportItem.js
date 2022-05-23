@@ -28,10 +28,9 @@ const EmployeeReportItem = (props) => {
           <Avatar shape="square" size={60} />
         </div>
         <div className="details">
-          <div className="name">Name</div>
-          <div className="email">Email</div>
-
-          <div className="role">Role</div>
+          <div className="name">{props.name}</div>
+          <div className="email">{props.email}</div>
+          <div className="role">{props.role}</div>
         </div>
       </div>
       <div className="button">

@@ -1,16 +1,12 @@
-module.exports = app =>{
-    const feedback = require("../controllers/feedback_controller.js");
+var express = require("express");
+var app = express();
+router = express.Router();
+const feedback = require("../controllers/feedback_controller");
+var router = require("express").Router();
 
-    var router = require("express").Router();
+router.post("/", feedback.create);
 
-    //create new feedback
-    router.post("/", feedback.create);
-    
-    //retrieve all feedback
-    router.get("/", feedback.findAll);
+//retrieve all feedback
+router.get("/", feedback.findAll);
 
-
-    router.delete("/:feedbackId" , feedback.delete)
-
-    app.use('/api/feedback', router);
-}
+module.exports = router;
