@@ -1,9 +1,22 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import "./LeavesTable.scss";
 import { Button, Table } from "antd";
+import axios from "axios";
+import { useState } from "react";
+
 
 const LeavesTable = () => {
   const isApprove = false;
+  // const [dataSource, setDataSource] = useState([
+  //   {
+  //     helpid: '',
+  //     helpTitle: '',
+  //     user_id:0,
+  //     helpDescription: '',
+  //     helpType:'',
+  //     isApproved:0
+  //   }
+  // ]);
   const dataSource = [
     {
       key: "1",
@@ -56,6 +69,16 @@ const LeavesTable = () => {
       render: (text) => !isApprove ? <Button type="primary">{text}</Button> : <>{text}</>,
     },
   ];
+  useEffect(()=>{
+    let i=0;
+    axios.get('http://localhost:5000/helpdesk').then(response=>{
+      response.data.forEach(element => {
+        // setDataSource(element)
+        console.log('dataSource:::',dataSource)
+        // i++;
+      });
+    })
+  },[])
   return (
     <div className="leavesTable">
       <Table
