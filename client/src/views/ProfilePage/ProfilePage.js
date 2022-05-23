@@ -17,12 +17,11 @@ const { Content } = Layout;
 const ProfilePage = () => {
   const dispatch = useDispatch();
   const userid = useSelector((state) => state.userDetails.userid);
-  const isLogin = useSelector((state) => state.userDetails.isLogin);
   useEffect(() => {
     axios
       .post("http://localhost:5000/profile/", { profile: { userId: userid } })
       .then((result) => {
-        console.log(result, "h");
+        // console.log(result, "h");
         dispatch(
           setUserDetails({
             username: result.data.username,

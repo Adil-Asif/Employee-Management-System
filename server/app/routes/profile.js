@@ -12,20 +12,19 @@ app.use(cors());
 app.use(express.json());
 
 router.post("/", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
   if (req.body.profile) {
-      console.log("2dfghj")
     var sql = "select *from user_details where userId= ?";
     const userId =  req.body.profile.userId;
-    console.log(userId, "sdfghj");
+    // console.log(userId, "sdfghj");
     db.query(sql, [userId], (err, result) => {
 
       if (err) {
         console.log(err);
       } else {
         if (result.length > 0) {
-            console.log(1);
-            console.log(result[0]);
+            // console.log(1);
+            // console.log(result[0]);
           res.send(result[0]);
         }
       }
@@ -33,7 +32,7 @@ router.post("/", (req, res) => {
   }
 
   if (req.body.leave) {
-    console.log(req.body.leave);
+    // console.log(req.body.leave);
     var sql = "insert into helpdesk values(?,?,?,?,?,?)";
     db.query(
       sql,
@@ -54,7 +53,7 @@ router.post("/", (req, res) => {
       }
     );
   } else if (req.body.image) {
-    console.log(req.body.image.imgUrl);
+    // console.log(req.body.image.imgUrl);
     var sql = "update employee set imgUrl=? where employee_id=?";
     db.query(sql, [req.body.image.imgUrl, 3], (err, result) => {
       if (err) {
@@ -65,7 +64,7 @@ router.post("/", (req, res) => {
       }
     });
   } else if (req.body.Announcement) {
-    console.log(req.body.Announcement);
+    // console.log(req.body.Announcement);
     var sql = "insert into announcement values(?,?,?)";
     db.query(
       sql,

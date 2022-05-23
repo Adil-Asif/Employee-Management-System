@@ -10,7 +10,7 @@ var session = require("sessionstorage");
 router.post("/", (req, res) => {
   //   console.log(req.body, "output");
   if (req.body.signup) {
-    console.log(req.body);
+    // console.log(req.body);
     var sql = "insert into user_details values(?,?,?,?,?,?,?)";
     const userID = uuid.v1();
     db.query(
@@ -29,11 +29,11 @@ router.post("/", (req, res) => {
           console.log("error", err);
           res.send("Email already registered");
         } else if (result) {
-          console.log("result", result);
+          // console.log("result", result);
           session.setItem("userid", userID);
           session.setItem("completestage", false);
           const i1 = session.getItem("userid");
-          console.log("id", i1, "h1");
+          // console.log("id", i1, "h1");
           res.send({ userid: userID });
         }
       }

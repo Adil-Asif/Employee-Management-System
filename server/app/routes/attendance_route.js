@@ -1,16 +1,13 @@
-module.exports = app =>{
-    const attendance = require("../controllers/attendance_controller.js");
+var express = require("express");
+var app = express();
+router = express.Router();
+const attendance = require("../controllers/attendance_controller");
+var router = require("express").Router();
 
-    var router = require("express").Router();
+//create new attendance
+router.post("/", attendance.create);
 
-    //create new attendance
-    router.post("/", attendance.create);
-    
-    //retrieve all attendance
-    router.get("/", attendance.findAll);
+//retrieve all attendance
+router.get("/", attendance.findAll);
 
-
-    router.delete("/:attendanceId" , attendance.delete)
-
-    app.use('/api/attendance', router);
-}
+module.exports = router;
