@@ -6,7 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import "./ProfileTitle.scss";
 import axios from 'axios'
+import { useSelector } from "react-redux";
 const ProfileTitle = () => {
+  const username = useSelector((state) => state.userDetails.username);
+  const userrole = useSelector((state) => state.userDetails.userrole);
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
@@ -158,8 +161,8 @@ const ProfileTitle = () => {
         </div>
       </div>
       <div className="profileDetails">
-        <div className="title">Welcome, &nbsp;Adil Asif</div>
-        <div className="role">Software Engineer</div>
+        <div className="title">Welcome, &nbsp;{username}</div>
+        <div className="role">{userrole}</div>
       </div>
     </div>
   );

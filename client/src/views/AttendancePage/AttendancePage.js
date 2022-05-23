@@ -1,14 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AttendancePage.scss";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import PageTitle from "../../components/PageTitle/PageTitle";
-import { Layout, Button, Timeline } from "antd";
+import noData from "../../assets/images/noData.svg";
+import { Layout, Button, Timeline, Image } from "antd";
 import Sidebar from "../../components/Sidebar/Sidebar";
-
+import axios from "axios";
+import { useSelector } from "react-redux";
 const { Content } = Layout;
 
-const HelpDeskPage = () => {
+const AttendancePage = () => {
+  let attendanceInfo = {
+    userid: "",
+    time: "",
+    status: "Punch Out",
+    isStatusUpdate: "false",
+  };
+  const [attendanceDetails, setAttendanceDetails] = useState([attendanceInfo]);
+  const [currentAttendance, setCurrentAttendance] = useState(attendanceInfo);
+  const [testUpdate, setTestUpdate] = useState(true);
+  const [testUpdate2, setTestUpdate2] = useState(true);
+  const userid = useSelector((state) => state.userDetails.userid);
+  console.log(userid);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/attendance", { params: { userId: userid } })
+      .then((result) => {
+        console.log(result);
+        if (result.data !== "none") {
+          console.log(result.data[0], "h");
+          attendanceInfo = result.data;
+          setAttendanceDetails(attendanceInfo);
+        }
+      });
+  }, [testUpdate2]);
+  useEffect(() => {
+    console.log(attendanceDetails, "h");
+  });
+  useEffect(() => {
+    console.log(currentAttendance.isStatusUpdate);
+    if (currentAttendance.isStatusUpdate === true) {
+      console.log("success");
+      axios
+        .post("http://localhost:5000/attendance", currentAttendance)
+        .then((response) => {
+          setCurrentAttendance(attendanceInfo);
+          if (testUpdate2) {
+            setTestUpdate2(false);
+          } else {
+            setTestUpdate2(true);
+          }
+        });
+
+      // attendanceInfo.isStatusUpdate = false;
+    }
+  }, [testUpdate]);
+
+  const calcTime = () => {
+    attendanceInfo = attendanceDetails[0];
+    const t = new Date();
+    const date = ("0" + t.getDate()).slice(-2);
+    const month = ("0" + (t.getMonth() + 1)).slice(-2);
+    const year = t.getFullYear();
+    const hours = ("0" + t.getHours()).slice(-2);
+    const minutes = ("0" + t.getMinutes()).slice(-2);
+    const seconds = ("0" + t.getSeconds()).slice(-2);
+    attendanceInfo.time = `${date}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
+    // console.log(attendanceDetails);
+    console.log(attendanceInfo, "j");
+    if (attendanceInfo.status === "Punch In") {
+      attendanceInfo.status = "Punch Out";
+    } else {
+      attendanceInfo.status = "Punch In";
+    }
+    attendanceInfo.userid = userid;
+    attendanceInfo.isStatusUpdate = true;
+    console.log(1);
+    setCurrentAttendance(attendanceInfo);
+    if (testUpdate) {
+      setTestUpdate(false);
+    } else {
+      setTestUpdate(true);
+    }
+  };
   return (
     <div className="attendancePage">
       <Header isLogin={true} />
@@ -33,48 +108,52 @@ const HelpDeskPage = () => {
               <div className="attendance">
                 <div className="markAttendance">
                   <div className="punchButton">
-                    <Button type="primary">Punch In</Button>
+                    <Button
+                      type="primary"
+                      onClick={() => {
+                        calcTime();
+                      }}
+                    >
+                      Punch
+                    </Button>
                   </div>
                   <div className="latest">
-                    Latest Activity <br />
-                    1234
+                    {attendanceDetails[0].time !== "" ? (
+                      <>
+                        Latest Activity <br />
+                        {attendanceDetails[0].status} at {attendanceDetails[0].time}
+                      </>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
                 <div className="attendanceHistory">
-                  <Timeline>
-                    <Timeline.Item>
-                      Create a services site 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Solve initial network problems 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                    <Timeline.Item>
-                      Network problems being solved 2015-09-01
-                    </Timeline.Item>
-                  </Timeline>
-                </div>
+                  {attendanceDetails[0].time !== "" ? (
+                    <>
+                      <Timeline>
+                        {attendanceDetails.map((attendanceDetail) => (
+                          console.log(attendanceDetail, "yes"),
+                          <>
+                            <Timeline.Item>
+                            {attendanceDetail.status} at {attendanceDetail.time}
+                            </Timeline.Item>
+                          </>
+                        ))}
+
+                        
+                      </Timeline>
+                    </>
+                  ) : (
+                    <div className="noattendanceHistory">
+                      <Image
+                        src={noData}
+                        alt="noData"
+                        style={{ width: "70%" }}
+                      />
+                    </div>
+                  )}
+                </div> 
               </div>
             </div>
           </Content>
@@ -86,4 +165,4 @@ const HelpDeskPage = () => {
   );
 };
 
-export default HelpDeskPage;
+export default AttendancePage;
