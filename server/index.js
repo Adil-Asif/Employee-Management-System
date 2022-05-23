@@ -6,6 +6,7 @@ const bodyParser = require("body-parser")
 var jsonParser = bodyParser.json()
 const signupRouter = require('./routes/signup')
 const profileRouter = require('./routes/profile')
+const helpdeskRouter = require('./routes/helpdesk')
 
 app.use(
     cors({
@@ -18,6 +19,7 @@ app.use(
 
 app.use('/',signupRouter)
 app.use('/profile',profileRouter)
+app.use('/helpdesk',helpdeskRouter)
 
 app.listen(5000,()=>{
     console.log('App listeneing on port 5000')
