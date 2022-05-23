@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import "./EmployeeReportItem.scss";
-import { Avatar, Button, Modal, Form, Select, Input } from "antd";
-const { Option } = Select;
+import { Avatar, Button, Modal, Form, Input } from "antd";
 
 const EmployeeReportItem = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -29,10 +28,9 @@ const EmployeeReportItem = (props) => {
           <Avatar shape="square" size={60} />
         </div>
         <div className="details">
-          <div className="name">Name</div>
-          <div className="email">Email</div>
-
-          <div className="role">Role</div>
+          <div className="name">{props.name}</div>
+          <div className="email">{props.email}</div>
+          <div className="role">{props.role}</div>
         </div>
       </div>
       <div className="button">
