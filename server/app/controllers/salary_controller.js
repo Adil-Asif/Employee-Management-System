@@ -33,7 +33,8 @@ exports.create = (req, res) => {
     
 };
 exports.findAll = (req, res) => {
-    const id = req.query.id;
+    const id = req.query.userId;
+    console.log(id);
 
     Salary.getAll(id, (err, data) => {
         if (err)
