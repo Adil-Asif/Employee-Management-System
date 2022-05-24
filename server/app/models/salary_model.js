@@ -3,7 +3,7 @@ const sql = require("./database.js")
 const Salary = function (salary) {
     this.month = salary.month;
     this.baseSalary = salary.baseSalary;
-    this.reimbursements = salary.password;
+    this.reimbursements = salary.reimbursements;
     this.bonuses = salary.bonuses;
     this.userId = salary.userId;
 }
