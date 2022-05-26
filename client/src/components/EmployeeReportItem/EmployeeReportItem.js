@@ -1,16 +1,25 @@
 import { React, useEffect, useState } from "react";
 import "./EmployeeReportItem.scss";
 import { Avatar, Button, Modal, Form, Input } from "antd";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const EmployeeReportItem = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [feedback, setFeedback] = useState("");
   const [form] = Form.useForm();
+  const userId = props.userId;
+
   useEffect(() => {
     if (feedback !== "") {
       console.log(feedback);
+      console.log(userId);
       setIsModalVisible(false);
+      axios.post("http://localhost:5000/feedback", {feedbackDescription: feedback.feedbackDescription, userId: userId}).then((response) => {
+        console.log(response);
+      })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [feedback]);
 
   const onSubmit = (values) => {
@@ -77,7 +86,7 @@ const EmployeeReportItem = (props) => {
                 </ul>
               </div>
               <Form.Item
-                name="feedback"
+                name="feedbackDescription"
                 label="Feedback"
                 rules={[
                   {

@@ -1,12 +1,13 @@
 import { React, useEffect, useState } from "react";
 import "./Register.scss";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Select } from "antd";
 import Logo from "../../assets/images/Logo.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { setIsLogin } from "../../slice/initialiseUserDetailsSlice";
 import { useDispatch } from "react-redux";
 const { Password } = Input;
+const { Option } = Select;
 
 const Register = (props) => {
   const dispatch = useDispatch();
@@ -60,7 +61,6 @@ const Register = (props) => {
     // eslint-disable-next-line no-unused-expressions
     registrationDetails !== "" ? (
       (console.log(registrationDetails),
-      (registrationDetails.role = "Employee"),
       axios
         .post("http://localhost:5000/", {
           signup: registrationDetails,
@@ -71,7 +71,7 @@ const Register = (props) => {
           } else {
             // setprops.loginForm(true);
             // props.loginForm = true;
-            message.success("Account Sucessfully Registered")
+            message.success("Account Sucessfully Registered");
             form.resetFields();
           }
           console.log(response);
@@ -85,7 +85,7 @@ const Register = (props) => {
 
   // // console.log('j')
   // }
-  console.log(props.loginForm,"2")
+  console.log(props.loginForm, "2");
   return (
     <div className="register">
       <div className="formHeader">
@@ -111,6 +111,26 @@ const Register = (props) => {
                 ]}
               >
                 <Input style={{ marginLeft: "60px" }} />
+              </Form.Item>
+              <Form.Item
+                label="Role"
+                name="role"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Select placeholder="Enter user role">
+                  <Option value="Human Resource">Human Resource</Option>
+                  <Option value="Project Lead">Project Lead</Option>
+                  <Option value="Project Manager">Project Manager</Option>
+                  <Option value="Software Engineer">Software Engineer</Option>
+                  <Option value="Automation Engineer">
+                    Automation Engineer
+                  </Option>
+                </Select>
               </Form.Item>
             </>
           ) : (

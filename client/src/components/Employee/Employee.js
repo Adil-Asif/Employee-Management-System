@@ -1,17 +1,22 @@
 import { React, useEffect, useState } from "react";
 import "./Employee.scss";
 import { Avatar, Button, Modal, Form, Select } from "antd";
+import axios from "axios";
 const { Option } = Select;
 
 const Employee = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [onboardingDetails, setOnboardingDetails] = useState("");
-  const [isOnboard, setIsOnBoard] = useState(props.isOnboarded);
   const [form] = Form.useForm();
   useEffect(() => {
     if (onboardingDetails !== "") {
       console.log(onboardingDetails);
       setIsModalVisible(false);
+      axios
+        .put("http://localhost:5000/userDetails/update", { userId: props.userId })
+        .then((response) => {
+          console.log(response);
+        });
     }
   }, [onboardingDetails]);
 
@@ -30,12 +35,12 @@ const Employee = (props) => {
           <Avatar shape="square" size={60} />
         </div>
         <div className="details">
-          <div className="name">Name</div>
-          <div className="email">Email</div>
+          <div className="name">{props.name}</div>
+          <div className="email">{props.email}</div>
           {props.isOnboarded ? (
             <>
               {" "}
-              <div className="role">Role</div>
+              <div className="role">{props.role}</div>
             </>
           ) : (
             <></>
@@ -107,9 +112,9 @@ const Employee = (props) => {
           <>
             <Button
               type="primary"
-              onClick={() => {
-                setIsOnBoard(false);
-              }}
+              // onClick={() => {
+              //   setIsOnBoard(false);
+              // }}
             >
               Offboard
             </Button>

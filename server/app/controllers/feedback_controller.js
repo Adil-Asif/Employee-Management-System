@@ -32,7 +32,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Feedback from the database (with condition).
 exports.findAll = (req, res) => {
-    const id = req.query.id;
+    const id = req.query.userId;
 
     Feedback.getAll(id, (err, data) => {
         if (err)

@@ -1,13 +1,28 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import { Layout } from "antd";
 import "./FeedbackPage.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import axios from "axios";
+import { useSelector } from "react-redux";
 const { Content } = Layout;
 
 const FeedbackPage = () => {
+  const userid = useSelector((state) => state.userDetails.userid);
+  const [Feedback, setFeedback] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/feedback", { params: { userId: userid } })
+      .then((result) => {
+        console.log(result);
+        setFeedback(result.data);
+      });
+  }, []);
+  useEffect(() => {
+    console.log(Feedback, "34");
+  }, [Feedback]);
   return (
     <div className="feedbackPage">
       <Header isLogin={true} />
@@ -29,9 +44,9 @@ const FeedbackPage = () => {
                   <PageTitle title="Feedback" />
                 </div>
               </div>
-              <div className="feedbackItem">
-                LoremIp lkcnlkenvlknlklk elj kj ckjjwebcvjnlknvlklk
-              </div>
+              {Feedback.map((feedbackdesc) => (
+                <div className="feedbackItem">{feedbackdesc.feedback}</div>
+              ))}
             </div>
           </Content>
         </Layout>

@@ -34,6 +34,34 @@ exports.create = (req, res) => {
     
 };
 
+<<<<<<< HEAD
+exports.update = (req,res)=>{
+  if(!req.body){
+    res.status(400).send({
+      message:'content can not be empty'
+    });
+  }
+  console.log(req.body, "2");
+  User.updatebyUserId(req.params.userId ,new User(req.body), (err,data) => {
+    
+    if(err){
+      if(err.kind==='not found'){
+        res.status(404).send({
+          message:`not found user with user id ${req.params.userId}`
+
+        });
+      }
+      else{
+      
+        res.status(500).send({
+          message: "error updating user with user id" + req.params.userId
+        });
+      }
+    }else res.send(data);
+  });
+};
+
+=======
 
 // Retrieve all Feedback from the database (with condition).
 exports.findAll = (req, res) => {
@@ -50,6 +78,7 @@ exports.findAll = (req, res) => {
 };
 
 
+>>>>>>> aa0338a60e9f55732b1150e8bd4886df223a79ed
 //Delete a Manager with the specified id in the request
 // Retrieve all Attendance from the database (with condition).
 exports.findAll = (req, res) => {

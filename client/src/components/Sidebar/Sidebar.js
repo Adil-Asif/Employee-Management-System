@@ -10,7 +10,8 @@ import reports from "../../assets/images/reports.svg";
 import benefits from "../../assets/images/benefits.svg";
 import helpdesk from "../../assets/images/helpdesk.svg";
 import attendance from "../../assets/images/attendance.svg";
-import { Menu, Layout, Image} from "antd";
+import { Menu, Layout, Image } from "antd";
+import { useSelector } from "react-redux";
 
 const { Sider } = Layout;
 
@@ -50,11 +51,16 @@ const Sidebar = (props) => {
     navigate("/benefits");
   };
 
-
+  const role = useSelector((state) => state.userDetails.userrole);
   return (
     <div className="sidebar">
       <Sider breakpoint="lg" style={{}}>
-        <Menu mode="inline" className="menu" theme="dark"  defaultSelectedKeys={[props.PageKey]}>
+        <Menu
+          mode="inline"
+          className="menu"
+          theme="dark"
+          defaultSelectedKeys={[props.PageKey]}
+        >
           <Menu.Item className="menuItem" key="1" onClick={movetoProfilePage}>
             <div>
               <Image
@@ -66,7 +72,11 @@ const Sidebar = (props) => {
               Profile
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="9" onClick={movetoAttendancePage}>
+          <Menu.Item
+            className="menuItem"
+            key="9"
+            onClick={movetoAttendancePage}
+          >
             <div>
               <Image
                 className="image"
@@ -99,17 +109,25 @@ const Sidebar = (props) => {
               Employee offboarding
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="4" onClick={movetoSalariesPage}>
-            <div>
-              <Image
-                className="image"
-                src={salary}
-                alt="salary"
-                preview={false}
-              />
-              Employee Salaries
-            </div>
-          </Menu.Item>
+          {role === "Human Resource" ? (
+            <Menu.Item
+              className="menuItem"
+              key="4"
+              onClick={movetoSalariesPage}
+            >
+              <div>
+                <Image
+                  className="image"
+                  src={salary}
+                  alt="salary"
+                  preview={false}
+                />
+                Employee Salaries
+              </div>
+            </Menu.Item>
+          ) : (
+            <></>
+          )}
           <Menu.Item className="menuItem" key="10" onClick={movetoPaySlipPage}>
             <div>
               <Image
@@ -132,17 +150,25 @@ const Sidebar = (props) => {
               Project Teams
             </div>
           </Menu.Item>
-          <Menu.Item className="menuItem" key="6" onClick={movetoEmployeeReportsPage}>
-            <div>
-              <Image
-                className="image"
-                src={reports}
-                alt="reports"
-                preview={false}
-              />
-              Employee Reports
-            </div>
-          </Menu.Item>
+          {role === "Human Resource" ? (
+            <Menu.Item
+              className="menuItem"
+              key="6"
+              onClick={movetoEmployeeReportsPage}
+            >
+              <div>
+                <Image
+                  className="image"
+                  src={reports}
+                  alt="reports"
+                  preview={false}
+                />
+                Employee Reports
+              </div>
+            </Menu.Item>
+          ) : (
+            <></>
+          )}
           <Menu.Item className="menuItem" key="11" onClick={movetoFeedbackPage}>
             <div>
               <Image

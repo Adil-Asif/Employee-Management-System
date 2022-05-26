@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import { Layout } from "antd";
@@ -10,12 +10,15 @@ import axios from "axios";
 const { Content } = Layout;
 
 const EmployeeReportsPage = () => {
-  useEffect(()=>{
-    axios.get("http://localhost:5000/userDetails").then((response) =>{
+  const [employeeData, setEmployeeData] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:5000/userDetails").then((response) => {
       console.log(response.data);
+      setEmployeeData(response.data);
+      //TODO: Update state here and render data
       console.log("1");
-    })
-  },[])
+    });
+  }, []);
   return (
     <div className="employeeReportsPage">
       <Header isLogin={true} />
@@ -38,11 +41,25 @@ const EmployeeReportsPage = () => {
                 </div>
               </div>
               <div className="employeeList">
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={false} />
-                <EmployeeReportItem isEnd={true} />
+                {employeeData.map((employee, i, employeeData) =>
+                  i + 1 !== employeeData.length ? (
+                    <EmployeeReportItem
+                      name={employee.username}
+                      userId = {employee.userId}
+                      email={employee.emailaddress}
+                      role={employee.role}
+                      isEnd={false}
+                    />
+                  ) : (
+                    <EmployeeReportItem
+                      name={employee.username}
+                      userId = {employee.userId}
+                      email={employee.emailaddress}
+                      role={employee.role}
+                      isEnd={true}
+                    />
+                  )
+                )}
               </div>
             </div>
           </Content>

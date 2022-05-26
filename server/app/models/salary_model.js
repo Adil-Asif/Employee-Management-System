@@ -3,7 +3,7 @@ const sql = require("./database.js")
 const Salary = function (salary) {
     this.month = salary.month;
     this.baseSalary = salary.baseSalary;
-    this.reimbursements = salary.password;
+    this.reimbursements = salary.reimbursements;
     this.bonuses = salary.bonuses;
     this.userId = salary.userId;
 }
@@ -22,9 +22,10 @@ Salary.create = (newSalary, result) => {
 };
 
 Salary.getAll = (id, result) => {
-    let query = "SELECT * FROM salary ";
+    console.log(result);
+    let query ="SELECT * FROM salary where userId = ?" ;
 
-    sql.query(query, (err, res) => {
+    sql.query(query,id ,(err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);

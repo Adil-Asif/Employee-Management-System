@@ -1,14 +1,11 @@
-module.exports = app =>{
-    const salary = require("../controllers/salary_controller.js");
+var express = require("express");
+var app = express();
+router = express.Router();
+const salary = require("../controllers/salary_controller");
+var router = require("express").Router();
 
-    var router = require("express").Router();
+router.post("/", salary.create);
 
-    router.post("/", salary.create);
+router.get("/", salary.findAll);
 
-    
-    router.get("/", salary.findAll);
-
-    router.delete("/:salaryId" , salary.delete)
-
-    app.use('/api/salary', router);
-}
+module.exports = router;
