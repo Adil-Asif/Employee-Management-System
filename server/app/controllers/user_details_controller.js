@@ -34,6 +34,7 @@ exports.create = (req, res) => {
     
 };
 
+<<<<<<< HEAD
 exports.update = (req,res)=>{
   if(!req.body){
     res.status(400).send({
@@ -60,6 +61,24 @@ exports.update = (req,res)=>{
   });
 };
 
+=======
+
+// Retrieve all Feedback from the database (with condition).
+exports.findAll = (req, res) => {
+    const id = req.query.id;
+
+    User.getAll(id, (err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving feedback."
+            });
+        else res.send(data);
+    });
+};
+
+
+>>>>>>> aa0338a60e9f55732b1150e8bd4886df223a79ed
 //Delete a Manager with the specified id in the request
 // Retrieve all Attendance from the database (with condition).
 exports.findAll = (req, res) => {
