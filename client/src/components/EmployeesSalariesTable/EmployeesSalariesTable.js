@@ -36,7 +36,7 @@ const EmployeesSalariesTable = () => {
     setSalaryDetails(values);
   };
 
-  const dataSource = [{}];
+  const dataSource = [];
 
   const columns = [
     {

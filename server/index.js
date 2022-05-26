@@ -18,7 +18,7 @@ const userDetailsRouter = require("./app/routes/user_details_route.js");
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
 );

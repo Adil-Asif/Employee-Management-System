@@ -79,7 +79,7 @@ const SalaryPage = () => {
                     </div>
                   </>
                 ) : (
-                  <>hi</>
+                  <></>
                 )
               )}
             </div>

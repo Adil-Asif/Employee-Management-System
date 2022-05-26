@@ -21,6 +21,24 @@ User.create = (newUser, result) => {
   });
 };
 
+// User.updatebyUserId = (userId, detail , result) => {
+//   console.log(userId,detail);
+//   sql.query("Update user_details set role = ? where userId = ?",
+//   [detail.role, userId],
+//   (err,res) => {
+//     if(err){
+//       console.log("error: ", err);
+//       result(null, err);
+//       return;
+//     }
+//     if(res.affectedRows == 0){
+//       result({kind: "not_found"}, null);
+//     }
+//     console.log("updated user: ",{userId: userId, ...detail});
+//     result(null, {userId:userId, ...detail});
+//   });
+// };
+
 User.getAll = (id, result) => {
   let query = "SELECT * FROM user_details";
 

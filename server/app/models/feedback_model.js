@@ -21,9 +21,9 @@ Feedback.create = (newFeedback, result) => {
 };
 
 Feedback.getAll = (id, result) => {
-  let query = "SELECT * FROM employee_reports ORDER BY feedbackId DESC;";
+  let query = "SELECT * FROM employee_reports where userId = ? ORDER BY reportid DESC;";
 
-  sql.query(query, (err, res) => {
+  sql.query(query,id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import CustomFooter from "../../components/CustomFooter/CustomFooter";
 import { Layout } from "antd";
@@ -16,6 +16,7 @@ const { Content } = Layout;
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+  const [announcementList, setAnnouncement] = useState([]);
   const userid = useSelector((state) => state.userDetails.userid);
   useEffect(() => {
     axios
@@ -27,10 +28,18 @@ const ProfilePage = () => {
             username: result.data.username,
             userrole: result.data.role,
             picture: result.data.imgUrl,
-            isOnboard:  result.data.isOnboard,
+            isOnboard: result.data.isOnboard,
             emailaddress: result.data.emailaddress,
           })
         );
+      });
+    axios
+      .post("http://localhost:5000/profile/", {
+        Announcementget: { userId: userid },
+      })
+      .then((result) => {
+        console.log(result, "h");
+        setAnnouncement(result.data);
       });
   }, []);
   return (
@@ -53,26 +62,18 @@ const ProfilePage = () => {
               <div className="right">
                 <div className="heading">Announcements</div>
                 <div>
-                  <Announcement />
-                  <Announcement />
-
-                  <Announcement />
-                  <Announcement />
-
-                  <Announcement />
-                  <Announcement />
-
-                  <Announcement />
-                  <Announcement />
+                  {announcementList.map((announcementItem) => (
+                    <Announcement announcementDescription ={announcementItem.userId}/>
+                  ))}
                 </div>
               </div>
               <div className="left">
-                <div className="projects">
+                {/* <div className="projects">
                   <div className="heading">Projects</div>
                   <div>
                     <Projects />
                   </div>
-                </div>
+                </div> */}
                 <div className="leaves">
                   <div className="heading">Help Desk</div>
                   <div>
@@ -82,7 +83,7 @@ const ProfilePage = () => {
                 <div className="addAnnouncement">
                   <div className="heading">Announcement</div>
                   <div>
-                    <AddAnnouncement />
+                    <AddAnnouncement count={announcementList.length}/>
                   </div>
                 </div>
               </div>

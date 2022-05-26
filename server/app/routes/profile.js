@@ -3,6 +3,7 @@ var app = express();
 router = express.Router();
 app.use("/", router);
 var db = require("../models/database");
+var uuid = require("uuid")
 var session = require("sessionstorage");
 const cors = require("cors");
 const cookieParser = require("body-parser");
@@ -65,10 +66,12 @@ router.post("/", (req, res) => {
     });
   } else if (req.body.Announcement) {
     // console.log(req.body.Announcement);
+    console.log(req.body.Announcement);
+    // console.log("success");
     var sql = "insert into announcement values(?,?,?)";
     db.query(
       sql,
-      [req.body.leave.userId, 3, req.body.Announcement.announcementdescription],
+      [ uuid.v1(),req.body.Announcement.userId, req.body.Announcement.announcementdescription],
       (err, result) => {
         if (err) {
           res.send(err);
@@ -77,6 +80,24 @@ router.post("/", (req, res) => {
         }
       }
     );
+  }
+  else if (req.body.Announcementget) {
+    // console.log(req.body.Announcement);
+    console.log(req.body.Announcement);
+    var sql = "select *from announcement ";
+    // console.log(use  rId, "sdfghj");
+    db.query(sql, (err, result) => {
+
+      if (err) {
+        console.log(err);
+      } else {
+        if (result.length > 0) {
+            // console.log(1);
+            // console.log(result[0]);
+          res.send(result);
+        }
+      }
+    });
   }
   // res.send({data:'hiiiiiiiiiii'})
 });

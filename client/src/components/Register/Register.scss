@@ -19,9 +19,13 @@
       font-weight: bold;
     }
     .ant-input,
+    .ant-select,
     .ant-input-password {
       width: 350px;
       border-radius: 4px;
+    }
+    .ant-select{
+     margin-left: 95px;
     }
   }
   .ant-btn-primary {

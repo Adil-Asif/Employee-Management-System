@@ -2,10 +2,10 @@ import React from "react";
 import "./Announcement.scss";
 import { Avatar } from "antd";
 
-const Announcement = () => {
+const Announcement = (props) => {
   return (
     <div className="announcement">
-      <div>Text</div>
+      <div>{props.announcementDescription}</div>
       <div>
         <Avatar />
       </div>

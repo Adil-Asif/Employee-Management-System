@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
         req.body.signup.emailaddress,
         bcrypt.hashSync(req.body.signup.password, 5),
         "",
-        "",
+        req.body.signup.role,
         false,
       ],
       (err, result) => {
